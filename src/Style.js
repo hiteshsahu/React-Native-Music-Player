@@ -14,7 +14,6 @@ var Style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#292f36',
   },
   song_title: {
     color: '#5cc8ff',
@@ -82,9 +81,13 @@ var Style = StyleSheet.create({
          alignItems: 'center',
          alignSelf: 'center',
       },
-
-
-
+        list: {
+           flexDirection: 'column',
+           justifyContent: 'space-between',
+           flexWrap: 'wrap',
+           width:width,
+           paddingHorizontal: 3,
+         },
 
 
 

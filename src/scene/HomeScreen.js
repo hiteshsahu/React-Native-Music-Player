@@ -1,10 +1,12 @@
 import React from 'react';
+import Style from '../Style';
 import {
   AppRegistry,
   Text,View,Button,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MovieRow from '../components/MediaRow';
+import MediaList from '../components/MediaList'
 export default class HomeScreen extends React.Component {
 
   //Tollbar title
@@ -15,10 +17,10 @@ export default class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View style={Style.container}>
         <Text>Hello, Chat App!</Text>
 
-        <MovieRow navigation={this.props.navigation} />
+        <MediaList  navigation={this.props.navigation} />
 
         <Button
           onPress={() => navigate('Detail',

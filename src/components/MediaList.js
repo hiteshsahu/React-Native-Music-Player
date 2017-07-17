@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import MovieRow from './MediaRow';
+import MediaRow from './MediaRow';
+import Style from '../Style';
 import { AppRegistry,
   ListView,
-   StyleSheet,
   Text, View ,
-  Navigator,
   RefreshControl} from 'react-native';
 
 var movieList = require('../mock/movies.json');
 
-export default class MovieList extends Component {
+export default class MediaList extends Component {
 
   // Initialize the hardcoded data
   constructor(props) {
@@ -37,30 +36,35 @@ export default class MovieList extends Component {
   }
 
   render() {
+
+    const { navigate } = this.props.navigation;
     return (
 
       <View style={{flex: 1, paddingTop: 22}}>
         <ListView
-          navigator={this.props.navigator}
-          contentContainerStyle={styles.list}
-           dataSource={this.state.dataSource}
+          navigate={this.props.navigate}
+          contentContainerStyle={Style.list}
+          dataSource={this.state.dataSource}
 
-           renderRow={(rowData) => <MovieRow
-           title = {rowData.title}
-           thumb = {rowData.cover}
-           year = {rowData.year}
-           synopsis = {rowData.synopsis}
-           movie={rowData}
+           renderRow={(rowData) =>
+          <MediaRow
+           Song = {rowData.title}
+           AlbumArt = {rowData.cover}
+           Artist = {rowData.year}
+           Album = {rowData.synopsis}
+           movie=  {rowData}
+
+           navigation={this.props.navigation}
+
            // Pass a function to handle row presses
-            onPress={()=>{
-         // Navigate to a separate movie detail screen
-           this.props.navigator.push({
-           name: 'Detail',
-           title: 'Detail',
-           movie: rowData,
-         });
-       }}
-            ></MovieRow>}
+           onPress={() => navigate('Detail',
+           { Song :rowData.title,
+               Artist: 'Lucy',
+               Album : "LOVE" ,
+               AlbumArt : rowData.cover
+             })
+          }
+            ></MediaRow>}
 
             refreshControl={
                <RefreshControl
@@ -78,35 +82,3 @@ export default class MovieList extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#292f36',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#FFF',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#FFF',
-    marginBottom: 5,
-  },
- toolbar: {
-   backgroundColor: '#131313',
-   height: 56,
-   alignSelf: 'stretch',
- },
-   list: {
-     flexDirection: 'row',
-     justifyContent: 'space-between',
-     flexWrap: 'wrap',
-     paddingHorizontal: 3,
-   },
-
-});
