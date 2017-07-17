@@ -1,0 +1,3 @@
+rootProject.name = 'React_Audio_Player'
+
+include ':app'
