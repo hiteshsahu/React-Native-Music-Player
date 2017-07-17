@@ -15,9 +15,9 @@ export default class HomeScreen extends React.Component {
     title: 'React Native Media Player',
   };
 
-  state{
-    movieList
-    }
+  // state{
+  //   movieList : ""
+  //   }
 
 
 componentDidMount = () => {
@@ -29,7 +29,7 @@ componentDidMount = () => {
           'Error :',
             errroMessage)},
             (responseJSON) => {
-            this.setState{movieList:responseJSON}
+            // this.setState{movieList:responseJSON}
             ToastAndroid.show('Success: '+responseJSON ,ToastAndroid.SHORT);})
            ;}
 
@@ -40,7 +40,7 @@ componentDidMount = () => {
         <Text>Hello, Chat App!</Text>
 
         <MediaList  navigation={this.props.navigation}
-          movieList = this.state.movieList />
+           />
 
         <Button
           onPress={() => navigate('Detail',
