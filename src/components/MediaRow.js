@@ -3,10 +3,8 @@ import Style from '../Style';
 import { StackNavigator } from 'react-navigation';
 import { AppRegistry,
   Image,Text ,
-  View,Dimensions,
+  View,
   TouchableOpacity} from 'react-native';
-const { width, height } = Dimensions.get('window');
-const gutter = 3; // You can add gutter if you want
 
 export default  class MovieRow extends Component {
 
@@ -15,11 +13,17 @@ export default  class MovieRow extends Component {
   }
 
   render({onPress} = this.props) {
-
+  const { navigate } = this.props.navigation;
     return (
 
       <TouchableOpacity
-
+            onPress={() => navigate('Detail',
+              { Song : 'Love Me',
+                  Artist: 'Lucy',
+                  Album : "LOVE" ,
+                  AlbumArt : "https://cdn.traileraddict.com/content/paramount-pictures/ghost-in-the-shell-poster-8.jpg"
+                }
+              )}
               activeOpacity={0.7}
       >
 

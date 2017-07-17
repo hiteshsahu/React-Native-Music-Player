@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
       <View>
         <Text>Hello, Chat App!</Text>
 
-        <MovieRow />
+        <MovieRow navigation={this.props.navigation} />
 
         <Button
           onPress={() => navigate('Detail',
