@@ -1,4 +1,6 @@
 # React-Native-Music-Player
+![HiteshSahu](https://github.com/hiteshsahu/React-Native-Music-Player/blob/master/android/app/src/main/res/mipmap-mdpi/ic_launcher.png "Hitesh Sahu")
+
 Beautiful Music Player built with React Native - Android
 
 ## This Projects Features
