@@ -10,6 +10,8 @@ Beautiful Music Player built with React Native - Android
 - Diaplay all Fetched Songs on react native List View
 - Option to Play Song with the help of react native plugin
 
+<img src="art/home_screen.png" width="30%"> <img src="art/detail.png" width="30%">
+
 ### Legal
 
      Copyright 2017 Hitesh Sahu (http://hiteshsahu.com)
