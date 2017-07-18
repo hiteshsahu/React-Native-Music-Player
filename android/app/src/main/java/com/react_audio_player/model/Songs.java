@@ -1,5 +1,9 @@
 package com.react_audio_player.model;
 
+import android.content.ContentUris;
+import android.net.Uri;
+import android.util.Log;
+
 import com.react_audio_player.utils.PlayerUtil;
 
 public class Songs {
@@ -10,6 +14,7 @@ public class Songs {
     private String artistName;
     private String fullPath;
     private long songLength;
+    private String albumArt;
 
     public Songs(long songID, String songName, String artistName, String albumName, String fullPath, long songLength) {
         this.songID = songID;
@@ -18,8 +23,20 @@ public class Songs {
         this.albumName = albumName;
         this.fullPath = fullPath;
         this.songLength = songLength;
+        this.albumArt = ContentUris.withAppendedId(Uri
+                        .parse("content://media/external/audio/albumart"),
+                this.songID).toString();
+
+        Log.e("albumArt", "albumArt is "+ albumArt);
     }
 
+    public String getAlbumArt() {
+        return albumArt;
+    }
+
+    public void setAlbumArt(String albumArt) {
+        this.albumArt = albumArt;
+    }
 
     public void setSongID(long songID) {
         this.songID = songID;

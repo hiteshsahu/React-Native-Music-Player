@@ -44,6 +44,7 @@ public class MusicPlayerModule extends ReactContextBaseJavaModule {
             return;
         }
 
+
         //Songs Found Convert to JSON and pass it back
         successCallback.invoke(new Gson().toJson(SongsCollection.getInstance().getListOfSongs()));
     }

@@ -2,68 +2,94 @@ import React, { Component } from 'react';
 import MediaRow from './MediaRow';
 import Style from '../Style';
 import { AppRegistry,
-  ListView,
-  Text, View ,
+  ListView,ActivityIndicator,
+  Text, View , ToastAndroid,
   RefreshControl} from 'react-native';
+  import MusicPlayerModule from '../modules/MusicPlayerModule';
 
 var movieList = require('../mock/movies.json');
 
 export default class MediaList extends Component {
 
+  componentDidMount = () => {
+      MusicPlayerModule.fetchAllSongs(
+        (errroMessage) => {
+              Alert.alert(
+              'Error :',
+               errroMessage)},
+        (responseJSON) => {
+                this.setState({
+                 dataSource: this.state.dataSource.cloneWithRows(JSON.parse(responseJSON)),
+                 loaded: true,
+               });
+            }
+        );
+  }
+
   // Initialize the hardcoded data
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
-       dataSource: ds.cloneWithRows(movieList),
+       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2,}),
        isRefreshing: false,
+       loaded: false,
     };
   }
 
-  _onRefresh() {
+_onRefresh() {
 
      this.setState({isRefreshing: true});
 
-     setTimeout(() => {
-     // prepend new data
-     movieList = require('../mock/movies_new.json');
-     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-     this.setState({
-       isRefreshing: false,
-       dataSource: ds.cloneWithRows(movieList),
-     });
-   }, 5000);
-  }
+     MusicPlayerModule.fetchAllSongs(
+       (errroMessage) => {
+             Alert.alert(
+             'Error :',
+              errroMessage)},
+       (responseJSON) => {
+               this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(JSON.parse(responseJSON)),
+                loaded: true,
+                isRefreshing: false,
+              });
+           }
+       );
+}
 
   render() {
-
     const { navigate } = this.props.navigation;
-    return (
 
-      <View style={{flex: 1, paddingTop: 22}}>
+    if(!this.state.loaded)
+    {
+      return (
+       <View style={{flex: 1}}>
+         <Text>
+           Fetching Songs...
+         </Text>
+
+         <ActivityIndicator
+           size="large"
+           color="#00aa00"
+         />
+       </View>
+     );
+    }
+
+    return (
+      <View style={{flex: 1}}>
+
         <ListView
           navigate={this.props.navigate}
           contentContainerStyle={Style.list}
           dataSource={this.state.dataSource}
-
            renderRow={(rowData) =>
           <MediaRow
-           Song = {rowData.title}
-           AlbumArt = {rowData.cover}
-           Artist = {rowData.year}
-           Album = {rowData.synopsis}
-           movie=  {rowData}
-
+           Song = {rowData.songName}
+           AlbumArt = {rowData.albumArt}
+           Artist = {rowData.artistName}
+           Album = {rowData.albumName}
            navigation={this.props.navigation}
 
-           // Pass a function to handle row presses
-           onPress={() => navigate('Detail',
-           { Song :rowData.title,
-               Artist: 'Lucy',
-               Album : "LOVE" ,
-               AlbumArt : rowData.cover
-             })
-          }
             ></MediaRow>}
 
             refreshControl={

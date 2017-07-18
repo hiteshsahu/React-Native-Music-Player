@@ -57,6 +57,40 @@ var Style = StyleSheet.create({
       borderColor: 'rgba(0,0,0,.2)'
     },
 
+    dashboard: {
+        flexDirection: 'row',
+        borderRadius: 4,
+        height: 100,
+        margin:3,
+        backgroundColor:'#616161',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-start',
+        borderWidth: 2,
+        borderColor: 'rgba(0,0,0,.2)'
+      },
+
+      dashboard_title: {
+        fontSize: 20,
+        padding:3,
+        marginLeft:5,
+        textAlign: 'center',
+        color: '#009688',
+      },
+
+      slider_value: {
+        fontSize: 15,
+        textAlign: 'center',
+        color: '#FFF',
+      },
+
+
+        slider_start: {
+          fontSize: 15,
+          textAlign: 'center',
+          color: '#FFF',
+        },
+
     list_items: {
         height: 105,
         flex:1,
@@ -170,8 +204,9 @@ var Style = StyleSheet.create({
     margin: 10,
   },
   slider: {
-  width: width,
-  margin: 10,
+  width: width-125,
+  marginBottom:5,
+  marginTop:10
 },
 // Main container
 containerDetail: {

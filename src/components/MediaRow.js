@@ -32,9 +32,9 @@ export default  class MovieRow extends Component {
       <View style={Style.list_image_thumb}><Image source={{uri:this.props.AlbumArt}} style={{width: 100, height: 100}}></Image></View>
 
         <View  style={Style.list_items}>
-        <Text  style={Style.heading_blue}  numberOfLines={2}>{this.props.Song}{"\n"}</Text>
-        <Text  style={Style.meta_data_list}>{this.props.Artist}</Text>
-        <Text  style={Style.meta_data_list} numberOfLines={3}>{this.props.Album}</Text></View>
+        <Text  style={Style.heading_blue}  numberOfLines={1}>{this.props.Song}{"\n"}</Text>
+        <Text  style={Style.meta_data_list} numberOfLines={1}>{this.props.Artist}</Text>
+        <Text  style={Style.meta_data_list} numberOfLines={1}>{this.props.Album}</Text></View>
 
   </View>
    </TouchableOpacity>
