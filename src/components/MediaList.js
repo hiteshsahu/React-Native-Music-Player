@@ -14,14 +14,14 @@ export default class MediaList extends Component {
   componentDidMount = () => {
       MusicPlayerModule.fetchAllSongs(
         (errroMessage) => {
-              Alert.alert(
-              'Error :',
-               errroMessage)},
+                            Alert.alert(
+                            'Error :',
+                             errroMessage)},
         (responseJSON) => {
-                this.setState({
-                 dataSource: this.state.dataSource.cloneWithRows(JSON.parse(responseJSON)),
-                 loaded: true,
-               });
+                          this.setState({
+                           dataSource: this.state.dataSource.cloneWithRows(JSON.parse(responseJSON)),
+                           loaded: true,
+                         });
             }
         );
   }
@@ -88,6 +88,7 @@ _onRefresh() {
            AlbumArt = {rowData.albumArt}
            Artist = {rowData.artistName}
            Album = {rowData.albumName}
+           songURL = {rowData.fullPath}
            navigation={this.props.navigation}
 
             ></MediaRow>}

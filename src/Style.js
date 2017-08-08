@@ -37,14 +37,12 @@ var Style = StyleSheet.create({
     padding:3,
     fontSize: 17,
   },
-
   heading_blue: {
     fontSize: 20,
     padding:3,
     textAlign: 'center',
     color: '#009688',
   },
-
   list_container: {
       flexDirection: 'row',
       borderRadius: 4,
@@ -56,7 +54,6 @@ var Style = StyleSheet.create({
       borderWidth: 2,
       borderColor: 'rgba(0,0,0,.2)'
     },
-
     dashboard: {
         flexDirection: 'row',
         borderRadius: 4,
@@ -69,7 +66,6 @@ var Style = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'rgba(0,0,0,.2)'
       },
-
       dashboard_title: {
         fontSize: 20,
         padding:3,
@@ -83,14 +79,11 @@ var Style = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
       },
-
-
-        slider_start: {
+    slider_start: {
           fontSize: 15,
           textAlign: 'center',
           color: '#FFF',
         },
-
     list_items: {
         height: 105,
         flex:1,
@@ -101,7 +94,6 @@ var Style = StyleSheet.create({
         alignItems: 'flex-start',
         alignSelf: 'flex-start',
       },
-
       list_image_thumb:
       {
          height: 110,
@@ -115,13 +107,13 @@ var Style = StyleSheet.create({
          alignItems: 'center',
          alignSelf: 'center',
       },
-        list: {
-           flexDirection: 'column',
-           justifyContent: 'space-between',
-           flexWrap: 'wrap',
-           width:width,
-           paddingHorizontal: 3,
-         },
+      list: {
+         flexDirection: 'column',
+         justifyContent: 'space-between',
+         flexWrap: 'wrap',
+         width:width,
+         paddingHorizontal: 3,
+       },
 
 
 

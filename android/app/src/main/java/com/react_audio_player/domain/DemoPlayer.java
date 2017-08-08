@@ -1,6 +1,7 @@
 package com.react_audio_player.domain;
 
 import android.media.MediaPlayer;
+import android.util.Log;
 
 import com.react_audio_player.utils.PlayerUtil;
 
@@ -26,19 +27,18 @@ public class DemoPlayer {
 
     public String getCurrentDuration() {
         return PlayerUtil.milliSecondsToTimer(mPlayer.getCurrentPosition());
-
     }
 
     public int getProgress() {
-        return PlayerUtil.getProgressPercentage(mPlayer.getCurrentPosition(), mPlayer.getDuration());
+        int getProgress = PlayerUtil.getProgressPercentage(mPlayer.getCurrentPosition(), mPlayer.getDuration());
+        Log.e("getProgress", "aaaaaaaaaaaa" + getProgress);
+        return getProgress;
     }
 
     public void play(String songURL, final SongCompletionListener songCompleted) {
 
         try {
-//            if (mPlayer.isPlaying()) {
             mPlayer.reset();
-//            }
 
             mPlayer.setDataSource(songURL);
             mPlayer.prepare();
@@ -46,9 +46,6 @@ public class DemoPlayer {
             mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-//                    mp.release();
-//                    mp = null;
-
                     songCompleted.onSongCompletion();
                 }
             });
@@ -83,11 +80,7 @@ public class DemoPlayer {
     }
 
     public boolean isPlaying() {
-
-        if (mPlayer != null) {
-            return mPlayer.isPlaying();
-        }
-        return false;
+        return mPlayer != null && mPlayer.isPlaying();
     }
 
     public MediaPlayer getPlayer() {
