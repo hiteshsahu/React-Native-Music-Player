@@ -6,12 +6,12 @@ Beautiful Music Player built with React Native - Android
 
 - Using [React Navigation](https://reactnavigation.org/docs/intro/)  for screen transition.
 - Using [React Navigation](https://reactnavigation.org/docs/intro/)  to pass arguments and display list and Detail.
-- Use of custom ReactNative Module to featch all Songs from SD card
-- Diaplay all Fetched Songs on a ReactNative List View
-- Tap on SOng to start playback
-- Tap on AlbumARt to view Song Detail
-- Seekbar to change song  progress
-- Use of ReactNative Events Callback to update progressBar
+- Use of custom ReactNative Module to featch all Songs from SD card.
+- Diaplay all Fetched Songs on a ReactNative List View.
+- Tap on list item to start playback.
+- Tap on AlbumArt to view song's detail.
+- Slider Seekbar to seek to a duration.
+- Use of ReactNative Events Callback to update Slider progress.
 
 <img src="Art/home_screen.png" width="30%"> <img src="Art/detail.png" width="30%">
 
